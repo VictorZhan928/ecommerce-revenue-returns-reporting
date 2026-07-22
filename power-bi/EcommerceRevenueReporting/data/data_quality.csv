@@ -1,0 +1,7 @@
+﻿check_name,affected_rows,affected_rate
+Missing customer ID,243007,0.227669
+Exact duplicate rows,34335,0.032168
+Cancellation or negative quantity,22951,0.021502
+Zero or negative unit price,6207,0.005815
+Missing description,4382,0.004105
+Zero quantity,0,0.0

@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+power-bi/**/.pbi/
+power-bi/**/.cache/

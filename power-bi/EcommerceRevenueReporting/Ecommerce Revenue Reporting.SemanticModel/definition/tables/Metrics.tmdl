@@ -1,0 +1,47 @@
+table Metrics
+
+	/// Completed-sale revenue after excluding cancellations and nonpositive prices
+	measure 'Completed Revenue' = SUM('Monthly Performance'[Completed Revenue])
+		formatString: £#,##0
+
+	/// Distinct completed invoices aggregated across reporting months
+	measure 'Completed Orders' = SUM('Monthly Performance'[Completed Orders])
+		formatString: #,##0
+
+	/// Completed revenue divided by completed orders
+	measure 'Average Order Value' = DIVIDE([Completed Revenue], [Completed Orders])
+		formatString: £#,##0.00
+
+	/// Cancelled invoices divided by completed plus cancelled invoices
+	measure 'Cancellation Rate' = DIVIDE(SUM('Monthly Performance'[Cancelled Orders]), SUM('Monthly Performance'[Completed Orders]) + SUM('Monthly Performance'[Cancelled Orders]))
+		formatString: 0.0%
+
+	/// Customers with a nonblank customer identifier and at least one completed sale
+	measure 'Active Customers' = COUNTROWS('Customer Performance')
+		formatString: #,##0
+
+	/// Units included in completed-sale transactions
+	measure 'Units Sold' = SUM('Monthly Performance'[Units Sold])
+		formatString: #,##0
+
+	/// Source transaction rows before business-rule exclusions
+	measure 'Source Rows' = CALCULATE(MAX(Reconciliation[SQL Value]), Reconciliation[Metric] = "Source transaction rows")
+		formatString: #,##0
+
+	/// Rows without a usable customer identifier
+	measure 'Missing Customer Rows' = CALCULATE(MAX('Data Quality'[Affected Rows]), 'Data Quality'[Check Name] = "Missing customer ID")
+		formatString: #,##0
+
+	/// Exact repeated source rows across all supplied fields
+	measure 'Exact Duplicate Rows' = CALCULATE(MAX('Data Quality'[Affected Rows]), 'Data Quality'[Check Name] = "Exact duplicate rows")
+		formatString: #,##0
+
+	column Placeholder
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Placeholder]
+
+	partition Metrics = calculated
+		mode: import
+		source = ROW("Placeholder", 1)

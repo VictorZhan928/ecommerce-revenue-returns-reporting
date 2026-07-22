@@ -1,0 +1,28 @@
+table 'Data Quality'
+
+	column 'Check Name'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: check_name
+
+	column 'Affected Rows'
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: none
+		sourceColumn: affected_rows
+
+	column 'Affected Rate'
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		sourceColumn: affected_rate
+
+	partition 'Data Quality' = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "\\data_quality.csv"), [Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				#"Changed Types" = Table.TransformColumnTypes(#"Promoted Headers", {{"check_name", type text}, {"affected_rows", Int64.Type}, {"affected_rate", type number}})
+			in
+				#"Changed Types"

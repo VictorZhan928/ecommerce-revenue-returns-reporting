@@ -1,0 +1,70 @@
+table 'Monthly Performance'
+
+	column 'Order Month'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: order_month
+
+	column 'Completed Revenue'
+		dataType: double
+		formatString: £#,##0.00
+		summarizeBy: none
+		sourceColumn: completed_revenue
+
+	column 'Completed Orders'
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: none
+		sourceColumn: completed_orders
+
+	column 'Units Sold'
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: none
+		sourceColumn: units_sold
+
+	column 'Average Order Value'
+		dataType: double
+		formatString: £#,##0.00
+		summarizeBy: none
+		sourceColumn: average_order_value
+
+	column 'Active Customers'
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: none
+		sourceColumn: active_customers
+
+	column 'Cancelled Orders'
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: none
+		sourceColumn: cancelled_orders
+
+	column 'Cancellation Value'
+		dataType: double
+		formatString: £#,##0.00
+		summarizeBy: none
+		sourceColumn: cancellation_value
+
+	column 'Cancellation Rate'
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		sourceColumn: cancellation_rate
+
+	column 'Revenue MoM Change'
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		sourceColumn: revenue_mom_change
+
+	partition 'Monthly Performance' = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "\\monthly_performance.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				#"Changed Types" = Table.TransformColumnTypes(#"Promoted Headers", {{"order_month", type text}, {"completed_revenue", type number}, {"completed_orders", Int64.Type}, {"units_sold", Int64.Type}, {"average_order_value", type number}, {"active_customers", Int64.Type}, {"cancelled_orders", Int64.Type}, {"cancellation_value", type number}, {"cancellation_rate", type number}, {"revenue_mom_change", type number}})
+			in
+				#"Changed Types"

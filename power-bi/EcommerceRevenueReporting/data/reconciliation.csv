@@ -1,0 +1,9 @@
+﻿metric,sql_value
+Source transaction rows,1067371
+Completed sales rows,1041670
+Cancellation rows,22951
+Completed revenue,20972594.57
+Completed orders,40077
+Cancelled orders,11685
+Units sold,11420305
+Active identified customers,5878

@@ -1,0 +1,80 @@
+{
+  "name": "RetailPortfolio-7f3a90c1.json",
+  "dataColors": [
+    "#13B5A4",
+    "#3B82F6",
+    "#F97360",
+    "#8B5CF6",
+    "#F2B134",
+    "#14745A"
+  ],
+  "good": "#13B5A4",
+  "neutral": "#F2B134",
+  "bad": "#F97360",
+  "foreground": "#172033",
+  "background": "#FFFFFF",
+  "tableAccent": "#13B5A4",
+  "textClasses": {
+    "callout": {
+      "fontSize": 25,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#172033"
+    },
+    "title": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#172033"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#172033"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#172033"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DCE3EC"
+              }
+            },
+            "radius": 8,
+            "width": 1
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "'Segoe UI Semibold'",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#172033"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

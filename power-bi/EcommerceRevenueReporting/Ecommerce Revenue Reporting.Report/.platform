@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ecommerce Revenue Reporting"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a9b2932c-37a0-49a9-9eaa-f5e247409ec4"
+  }
+}

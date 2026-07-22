@@ -1,0 +1,5 @@
+E-Commerce Revenue & Returns Reporting | Excel, SQL, PostgreSQL, Power BI
+
+• Analyzed 1.06M retail transactions with SQL to track £20.97M in revenue, orders, and cancellations.
+• Built Excel and Power BI dashboards reporting revenue, product, country, customer, and quality KPIs.
+• Reconciled reporting outputs and identified 243K missing customer IDs and 34K duplicate records.
