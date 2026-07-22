@@ -5,6 +5,12 @@ real transaction rows supplied by the UCI Machine Learning Repository.
 
 ![Excel executive dashboard](images/excel_dashboard_preview.png)
 
+## Power BI dashboard
+
+![Power BI executive overview](images/powerbi-executive-overview.png)
+
+![Power BI data-quality dashboard](images/powerbi-data-quality.png)
+
 ## Business objective
 
 Create a repeatable management reporting process that monitors completed
